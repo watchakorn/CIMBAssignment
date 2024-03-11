@@ -93,4 +93,14 @@ public class DemoApplication {
         System.out.println("q2 end");
     }
 
+
+    public void q3(int n) {
+        System.out.println("q3 begin");
+        System.out.println("input n = " + n);
+        if (n < 1 || n > 45) return;
+
+
+        System.out.println("q3 end");
+    }
+
 }
