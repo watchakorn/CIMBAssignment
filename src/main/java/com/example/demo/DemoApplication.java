@@ -73,7 +73,18 @@ public class DemoApplication {
             System.out.println("version1 or version2 is not a valid version number");
             return;
         }
+        String[] version1Arr = version1.split("\\.");
+        String[] version2Arr = version2.split("\\.");
+        int length = Math.min(version1Arr.length, version2Arr.length);
+        int result = 0;
+        for (int i = 0; i < length; i++) {
+            int v1 = Integer.parseInt(version1Arr[i]);
+            int v2 = Integer.parseInt(version2Arr[i]);
+            if (v1 < v2) result = -1;
+            else if (v1 > v2) result = 1;
+        }
 
+        System.out.println("Result is " + result);
         System.out.println("q2 end");
     }
 
