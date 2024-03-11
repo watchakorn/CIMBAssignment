@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DemoApplication {
 
     public static void main(String[] args) {
@@ -12,6 +15,11 @@ public class DemoApplication {
         demo.q2("1.01", "1.001");
         demo.q2("1.0", "1.0.0");
         demo.q2("0.1", "1.1");
+
+        demo.q3(2);
+        demo.q3(3);
+        demo.q3(4);
+        demo.q3(5);
     }
 
     public void q1(int[] prices) {
@@ -93,14 +101,56 @@ public class DemoApplication {
         System.out.println("q2 end");
     }
 
-
     public void q3(int n) {
         System.out.println("q3 begin");
         System.out.println("input n = " + n);
         if (n < 1 || n > 45) return;
 
+        /*
+        n = 4
+        1 -> 1 + 1 + 1 + 1
+        2 -> 1 + 1 + 2
+        3 -> 1 + 2 + 1
+        4 -> 2 + 1 + 1
+        5 -> 2 + 2
+
+        n = 5
+        1 -> 1 + 1 + 1 + 1 + 1
+        2 -> 1 + 1 + 1 + 2
+        3 -> 1 + 1 + 2 + 1
+        4 -> 1 + 2 + 1 + 1
+        5 -> 2 + 1 + 1 + 1
+        6 -> 2 + 2 + 1
+        7 -> 2 + 1 + 2
+        8 -> 1 + 2 + 2
+         */
+        List<String> patterns = new ArrayList<>();
+        findPattern(patterns, "", n);
+
+        for (String pattern : patterns) {
+            System.out.println(pattern);
+        }
+        System.out.println("input n = " + n + " count: " + patterns.size());
 
         System.out.println("q3 end");
+    }
+
+    public static void findPattern(List<String> patterns, String pattern, int n) {
+        if (n == 0) {
+            patterns.add(pattern);
+            return;
+        }
+
+        if (n >= 1) {
+            if (!"".equals(pattern))
+                pattern += " + ";
+            findPattern(patterns, pattern + "1", n - 1);
+        }
+        if (n >= 2) {
+            if (!"".equals(pattern) && !pattern.endsWith("+ "))
+                pattern += " + ";
+            findPattern(patterns, pattern + "2", n - 2);
+        }
     }
 
 }
