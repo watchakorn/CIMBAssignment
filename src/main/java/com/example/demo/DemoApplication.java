@@ -1,13 +1,28 @@
 package com.example.demo;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-@SpringBootApplication
 public class DemoApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoApplication.class, args);
+		DemoApplication demo = new DemoApplication();
+		Double[] req = {7.0,1.0,5.0,3.0,6.0,4.0};
+		demo.q1(req);
 	}
 
+	public void q1(Double[] prices) {
+		System.out.println("q1 begin");
+		try {
+			if (prices == null) {
+				System.out.println("input is null.");
+				return;
+			}
+			System.out.println("Price quantity: " + prices.length);
+
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			System.out.println("q1 end");
+		}
+	}
 }
