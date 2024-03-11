@@ -80,8 +80,13 @@ public class DemoApplication {
         for (int i = 0; i < length; i++) {
             int v1 = Integer.parseInt(version1Arr[i]);
             int v2 = Integer.parseInt(version2Arr[i]);
-            if (v1 < v2) result = -1;
-            else if (v1 > v2) result = 1;
+            if (v1 < v2) {
+                result = -1;
+                break;
+            } else if (v1 > v2) {
+                result = 1;
+                break;
+            }
         }
 
         System.out.println("Result is " + result);
